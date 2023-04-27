@@ -1,0 +1,65 @@
+Cabal-version:        2.2
+Name:                 test-hashable-primitive
+Version:              0.0.0.0
+License:              BSD-2-Clause
+Build-type:           Simple
+
+common common-options
+  default-language:   Haskell2010
+  default-extensions: BangPatterns
+                      BinaryLiterals
+                      DataKinds
+                      DefaultSignatures
+                      DeriveDataTypeable
+                      DeriveFoldable
+                      DeriveFunctor
+                      DeriveGeneric
+                      DeriveLift
+                      DeriveTraversable
+                      DerivingStrategies
+                      InstanceSigs
+                      KindSignatures
+                      NoStarIsType
+                      PostfixOperators
+                      ScopedTypeVariables
+                      StandaloneDeriving
+                      TupleSections
+                      TypeApplications
+                      TypeOperators
+                      ViewPatterns
+
+Library
+  import:             common-options
+  HS-Source-Dirs:     src
+
+  ghc-options:        -Wall -Wcompat
+  CPP-Options:        -DCABAL
+
+  other-extensions:   CPP
+                      DeriveAnyClass
+                      FlexibleContexts
+                      FlexibleInstances
+                      GeneralizedNewtypeDeriving
+                      LambdaCase
+                      MultiParamTypeClasses
+                      OverloadedStrings
+                      RankNTypes
+                      RecordWildCards
+                      TemplateHaskell
+
+  Build-depends:      base                    >= 4.11     && < 5,
+                      binary                  >= 0.8.5    && < 0.11,
+                      hashable                >= 1.2.1.0  && < 1.5,
+                      primitive               >= 0.5.0.1  && < 1.0,
+
+  Exposed-modules:    Data.Primitive.ByteArray.Extra
+
+executable test-hash
+  Main-Is:            TestHash.hs
+  Build-Depends:
+    base,
+    test-hashable-primitive,
+    hashable,
+    primitive
+  GHC-Options:        -Wall -Wcompat
+  default-language:   Haskell2010
